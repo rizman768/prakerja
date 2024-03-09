@@ -9,9 +9,9 @@ class MahasiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($nama_mahasiswa)
+    public function index()
     {
-        return "nama saya $nama_mahasiswa mahasiswa abadi";
+        return view('layouts.template');
     }
 
     /**

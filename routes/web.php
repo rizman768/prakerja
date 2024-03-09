@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 
@@ -24,6 +25,7 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'index'])->name("login");
 Route::post('/user_login', [AuthController::class, 'login']);
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-});
+    Route::resource('/user', UserController::class);
+// });

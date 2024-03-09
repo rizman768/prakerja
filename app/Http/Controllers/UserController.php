@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Mahasiswa::all();
-
-
-        // return $data;
-        return view('layouts.template', compact('data'));
+        $data = User::all();
+        return view('content.user', compact( 'data'));
     }
 
     /**
@@ -32,9 +29,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Mahasiswa::create($request->all());
-
-        return $data;
+        //
     }
 
     /**
@@ -42,9 +37,7 @@ class MahasiswaController extends Controller
      */
     public function show(string $id)
     {
-        $data = Mahasiswa::where('id', $id)->first();
-
-        return $data;
+        //
     }
 
     /**
@@ -60,9 +53,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = Mahasiswa::where('id', $id)->first();
-        Mahasiswa::update($request->all());
-        return $data;
+        //
     }
 
     /**
@@ -70,6 +61,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        Mahasiswa::where('id', $id)->delete();
+        $data = User::where('id', $id)->delete();
+        return view('user.index')->with(compact('data'));
     }
 }
